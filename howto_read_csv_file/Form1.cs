@@ -55,6 +55,8 @@ namespace howto_read_csv_file
                 }
             }
 
+            label2.Text = values[1, 1];
+
             //// Make the columns autosize.
             //foreach (DataGridViewColumn col in dgvValues.Columns)
             //    col.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -75,7 +77,7 @@ namespace howto_read_csv_file
 
             // See how many rows and columns there are.
             int num_rows = lines.Length;
-            int num_cols = lines[0].Split(',').Length;
+            int num_cols = lines[0].Split(';').Length;
 
             // Allocate the data array.
             string[,] values = new string[num_rows, num_cols];
@@ -83,7 +85,7 @@ namespace howto_read_csv_file
             // Load the array.
             for (int r = 0; r < num_rows; r++)
             {
-                string[] line_r = lines[r].Split(',');
+                string[] line_r = lines[r].Split(';');
                 for (int c = 0; c < num_cols; c++)
                 {
                     values[r, c] = line_r[c];
